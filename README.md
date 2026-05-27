@@ -3,6 +3,12 @@
 [vla_server](https://github.com/wadajun8/vla_server)と[camera_server](https://github.com/wadajun8/camera_server)を使います。
 
 ## setup
+- pythonの仮想環境venvと、リポジトリのクローンにgit LFSを使用します
+```
+sudo apt install python3.10-venv
+git lfs install
+```
+- リポジトリをクローンし、仮想環境を構築します
 ```
 git clone git@github.com:wadajun8/raspicat_omnivla.git
 cd raspicat_omnivla
@@ -21,11 +27,12 @@ source install/setup.bash
 ```
 ros2 run camera_server camera_node
 ```
+- INITIAL INSTRUCTIONは、指示に書き換えてください
 ```
 ros2 run vla_server vla_node INITIAL INSTRUCTION
 ```
 
-- raspicat側では以下の2つを別々のターミナルで打つ（たぶん! まだやってない）
+- raspicat側では以下の2つを別々のターミナルで打つ
 ```
 ros2 launch raspicat raspicat.launch.py
 ```
@@ -33,6 +40,7 @@ ros2 launch raspicat raspicat.launch.py
 ros2 service call /motor_power std_srvs/SetBool '{data: true}'
 ```
 - 指示を更新するならこれ
+  - UPDATE INSTRUCTIONは指示に書き換えてください
 ```
 ros2 topic pub -1 /vla/instruction std_msgs/msg/String "{data: 'UPDATE INSTRUCTION'}"
 ```
